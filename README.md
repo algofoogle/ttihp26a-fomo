@@ -1,8 +1,10 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# Tiny Tapeout Verilog Project Template
+# TTIHP26a FOMO! A Tiny Tapeout Verilog Project...
 
-- [Read the documentation for project](docs/info.md)
+This is just a placeholder project for now, created via the [VGA Playground](https://vga-playground.com/), because I have a Fear Of Missing Out on this shuttle!
+
+- [Read the documentation for project](docs/info.md) but I will probably replace all of this soon with something else.
 
 ## What is Tiny Tapeout?
 
