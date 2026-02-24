@@ -9,12 +9,14 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+For now it just generates basic VGA video timing and generates some crappy noise patterns.
+
+Later, it might be a totally different project!
 
 ## How to test
 
-Explain how to use your project
+Supply the usual 25.175MHz clock and use a Tiny VGA PMOD.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Tiny VGA PMOD is all you really need for now.
