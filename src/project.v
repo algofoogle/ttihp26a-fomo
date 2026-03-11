@@ -5,69 +5,167 @@
 
 `default_nettype none
 
-module tt_um_algofoogle_fomo(
-  input  wire [7:0] ui_in,    // Dedicated inputs
-  output wire [7:0] uo_out,   // Dedicated outputs
-  input  wire [7:0] uio_in,   // IOs: Input path
-  output wire [7:0] uio_out,  // IOs: Output path
-  output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-  input  wire       ena,      // always 1 when the design is powered, so you can ignore it
-  input  wire       clk,      // clock
-  input  wire       rst_n     // reset_n - low to reset
+parameter LOGO_SIZE = 128;  // Size of the logo in pixels
+parameter DISPLAY_WIDTH = 640;  // VGA display width
+parameter DISPLAY_HEIGHT = 480;  // VGA display height
+
+`define COLOR_WHITE 3'd7
+
+module tt_um_vga_example (
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
 );
 
   // VGA signals
   wire hsync;
   wire vsync;
-  wire [1:0] R;
-  wire [1:0] G;
-  wire [1:0] B;
+  reg [1:0] R;
+  reg [1:0] G;
+  reg [1:0] B;
   wire video_active;
+  wire [9:0] pix_x;
   wire [9:0] pix_y;
 
+  // Configuration
+  wire cfg_tile = ui_in[0];
+  wire cfg_color = ui_in[1];
+
   // TinyVGA PMOD
-  assign uo_out = {hsync, B[0], G[0], R[0], vsync, B[1], G[1], R[1]};
+  assign uo_out  = {hsync, B[0], G[0], R[0], vsync, B[1], G[1], R[1]};
 
   // Unused outputs assigned to 0.
   assign uio_out = 0;
   assign uio_oe  = 0;
 
   // Suppress unused signals warning
-  wire _unused_ok = &{ena, ui_in, uio_in};
+  wire _unused_ok = &{ena, ui_in[7:1], uio_in};
 
-  reg [9:0] counter;
+  reg [9:0] prev_y;
 
-  wire [9:0] h;
-  wire [9:0] v;
-
-  hvsync_generator hvsync_gen(
-    .clk(clk),
-    .reset(~rst_n),
-    .hsync(hsync),
-    .vsync(vsync),
-    .display_on(video_active),
-    .hpos(h),
-    .vpos(v)
+  hvsync_generator vga_sync_gen (
+      .clk(clk),
+      .reset(~rst_n),
+      .hsync(hsync),
+      .vsync(vsync),
+      .display_on(video_active),
+      .hpos(pix_x),
+      .vpos(pix_y)
   );
 
-  reg [19:0] vx;
-  reg [19:0] vy;
+  reg [9:0] logo_left;
+  reg [9:0] logo_top;
+  reg dir_x;
+  reg dir_y;
 
-  
-  wire [9:0] moving_x = vx[19:10] + counter;
-  assign pix_y = vy[19:10];
+  wire pixel_value;
+  reg [2:0] color_index;
+  wire [5:0] color;
 
-  assign R = video_active ? {moving_x[5], pix_y[2]} : 2'b00;
-  assign G = video_active ? {moving_x[6], pix_y[2]} : 2'b00;
-  assign B = video_active ? {moving_x[7], pix_y[5]} : 2'b00;
-  
-  always @(posedge vsync, negedge rst_n) begin
+  wire [9:0] x = pix_x - logo_left;
+  wire [9:0] y = pix_y - logo_top;
+  wire logo_pixels = cfg_tile || (x[9:7] == 0 && y[9:7] == 0);
+
+  bitmap_rom rom1 (
+      .x(x[6:0]),
+      .y(y[6:0]),
+      .pixel(pixel_value)
+  );
+
+  palette palette_inst (
+      .color_index(cfg_color ? color_index : `COLOR_WHITE),
+      .rrggbb(color)
+  );
+
+  wire [5:0] under;
+
+  background bg_inst (
+    .clk(clk),
+    .vsync(vsync),
+    .video_active(video_active),
+    .rst_n(rst_n),
+    .px(pix_x),
+    .py(pix_y),
+    .rrggbb(under)
+  );
+
+  // RGB output logic
+  always @(posedge clk) begin
     if (~rst_n) begin
-      counter <= 0;
+      R <= 0;
+      G <= 0;
+      B <= 0;
     end else begin
-      counter <= counter + 1;
+      R <= 0;
+      G <= 0;
+      B <= 0;
+      if (video_active) begin
+        if (logo_pixels && pixel_value) begin
+          R <= color[5:4];
+          G <= color[3:2];
+          B <= color[1:0];
+        end else begin
+          R <= under[5:4];
+          G <= under[3:2];
+          B <= under[1:0];
+        end
+      end
     end
   end
+
+  // Bouncing logic
+  always @(posedge clk) begin
+    if (~rst_n) begin
+      logo_left <= 200;
+      logo_top <= 200;
+      dir_y <= 0;
+      dir_x <= 1;
+      color_index <= 0;
+    end else begin
+      prev_y <= pix_y;
+      if (pix_y == 0 && prev_y != pix_y) begin
+        logo_left <= logo_left + (dir_x ? 1 : -1);
+        logo_top  <= logo_top + (dir_y ? 1 : -1);
+        if (logo_left - 1 == 0 && !dir_x) begin
+          dir_x <= 1;
+          color_index <= color_index + 1;
+        end
+        if (logo_left + 1 == DISPLAY_WIDTH - LOGO_SIZE && dir_x) begin
+          dir_x <= 0;
+          color_index <= color_index + 1;
+        end
+        if (logo_top - 1 == 0 && !dir_y) begin
+          dir_y <= 1;
+          color_index <= color_index + 1;
+        end
+        if (logo_top + 1 == DISPLAY_HEIGHT - LOGO_SIZE && dir_y) begin
+          dir_y <= 0;
+          color_index <= color_index + 1;
+        end
+      end
+    end
+  end
+
+endmodule
+
+module background(
+  input clk,
+  input vsync,
+  input video_active,
+  input rst_n,
+  input [9:0] px,
+  input [9:0] py,
+  output [5:0] rrggbb
+);
+
+  reg [9:0] counter;
+  reg [19:0] vx;
+  reg [19:0] vy;
 
   always @(posedge clk, negedge rst_n) begin
     if (~rst_n) begin
@@ -77,13 +175,27 @@ module tt_um_algofoogle_fomo(
       if (video_active) begin
         vx <= vx + 704 + ({10'd0,counter}>>2);
       end
-      if (h==0) begin
+      if (py==0) begin
         vy <= vy + 720 + {10'd0,counter};
       end
     end
   end
 
-  // Suppress unused signals warning
-  wire _unused_ok_ = &{moving_x, pix_y};
+  always @(posedge vsync, negedge rst_n) begin
+    if (~rst_n) begin
+      counter <= 0;
+    end else begin
+      counter <= counter + 1;
+    end
+  end
+
+  wire [9:0] moving_x = vx[19:10] + counter;
+  wire [9:0] pix_y = vy[19:10];
+
+  assign rrggbb = {
+    {moving_x[5], pix_y[2]},
+    {moving_x[6], pix_y[2]},
+    {moving_x[7], pix_y[5]}
+  };
 
 endmodule
