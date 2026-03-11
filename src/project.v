@@ -72,8 +72,8 @@ module tt_um_algofoogle_fomo (
   wire logo_pixels = cfg_tile || (x[9:7] == 0 && y[9:7] == 0);
 
   bitmap_rom rom1 (
-      .x(x[6:0]),
-      .y(y[6:0]),
+      .x({x[6:1],1'b0}),
+      .y({y[6:1],1'b0}),
       .pixel(pixel_value)
   );
 
