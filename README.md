@@ -1,6 +1,12 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg)
 
-# Tiny Tapeout Analog Project Template
+# TTIHP26a FOMO! A Tiny Tapeout Verilog Project...
+
+This is just a placeholder project for now, because I have a Fear Of Missing Out on this shuttle!
+
+This is an attempt to create a custom layout in a 1x1 tile.
+
+For now this project is just a modified version of the [ttihp-analog-template](https://github.com/tinytapeout/ttihp-analog-template) that uses a 1x1 tile and provides [custom GDS](./gds/).
 
 - [Read the documentation for project](docs/info.md)
 

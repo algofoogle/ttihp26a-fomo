@@ -9,3 +9,9 @@ test/sim_build
 test/__pycache__/
 test/results.xml
 test/gate_level_netlist.v
+magic/*_parax*
+magic/*.lvs.*
+magic/*.sim.spice
+
+# tt-support-tools, just used for local hardening processes/setup:
+tt

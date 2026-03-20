@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+Metal wires connect the 8 input pins directly to the 8 output pins.
 
 ## How to test
 
-Explain how to use your project
+Present signals on `ui_in` and observe them appear on `uo_out`.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Maybe just an oscilloscope to measure timing?
