@@ -1,0 +1,32 @@
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/tb_inverter.sch
+**.subckt tb_inverter
+x1 VPWR Y A GND inverter
+V1 VPWR GND 1.2
+V2 A GND PULSE(0V 1.2V 1ns 5ns 5ns 10ns 30ns)
+R1 Y GND 10Meg
+**** begin user architecture code
+
+.control
+tran 1p 200n
+write tb_inverter.raw
+.endc
+
+
+.lib /home/anton/asic/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  inverter.sym # of pins=4
+** sym_path: /home/anton/projects/ttihp26a-fomo/xschem/inverter.sym
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/inverter.sch
+.subckt inverter VCC Y A VGND
+*.iopin VCC
+*.ipin A
+*.opin Y
+*.iopin VGND
+XM1 Y A VGND VGND sg13_lv_nmos w=0.15u l=0.13u ng=1
+XM2 Y A VCC VCC sg13_lv_pmos w=0.15u l=0.13u ng=1
+.ends
+
+.end

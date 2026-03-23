@@ -1,0 +1,100 @@
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/tb_ringosc.sch
+**.subckt tb_ringosc
+V1 VPWR GND 1.2
+V2 net4 GND PWL(0ns,0V 2ns,0V,4ns,1.2V 10ns,1.2V,12ns,0V 17ns,0V,17.1ns,1.2V 23.1ns,1.2V,23.2ns,0V 100ns,0V)
+XM1 vp GND net1 net1 sg13_lv_pmos w=0.5u l=2u ng=1
+XM2 vn VPWR net2 net2 sg13_lv_nmos w=0.15u l=2.5u ng=1
+x1 vp vn net3 A inv30x
+x2 VPWR net3 A ENb GND nand
+R1 ENb net4 200
+VIgnd net2 GND 0
+VIpwr VPWR net1 0
+XM3 vp VPWR net1 net1 sg13_lv_pmos w=0.5u l=1u ng=1
+XM4 vn GND net2 net2 sg13_lv_nmos w=0.15u l=1.25u ng=1
+XM5 vn GND net2 net2 sg13_lv_nmos w=0.15u l=0.65u ng=1
+XM6 vp VPWR net1 net1 sg13_lv_pmos w=0.5u l=0.5u ng=1
+XM7 vn GND net2 net2 sg13_lv_nmos w=1u l=0.15u ng=1
+XM8 vp VPWR net1 net1 sg13_lv_pmos w=2u l=0.15u ng=1
+**** begin user architecture code
+
+.control
+tran 1p 30n UIC
+write tb_inverter.raw
+.endc
+
+
+.lib /home/anton/asic/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  inv30x.sym # of pins=4
+** sym_path: /home/anton/projects/ttihp26a-fomo/xschem/inv30x.sym
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/inv30x.sch
+.subckt inv30x VCC VGND Y A
+*.ipin A
+*.opin Y
+*.iopin VCC
+*.iopin VGND
+x[29] VCC Y J[28] VGND inverter
+x[28] VCC J[28] J[27] VGND inverter
+x[27] VCC J[27] J[26] VGND inverter
+x[26] VCC J[26] J[25] VGND inverter
+x[25] VCC J[25] J[24] VGND inverter
+x[24] VCC J[24] J[23] VGND inverter
+x[23] VCC J[23] J[22] VGND inverter
+x[22] VCC J[22] J[21] VGND inverter
+x[21] VCC J[21] J[20] VGND inverter
+x[20] VCC J[20] J[19] VGND inverter
+x[19] VCC J[19] J[18] VGND inverter
+x[18] VCC J[18] J[17] VGND inverter
+x[17] VCC J[17] J[16] VGND inverter
+x[16] VCC J[16] J[15] VGND inverter
+x[15] VCC J[15] J[14] VGND inverter
+x[14] VCC J[14] J[13] VGND inverter
+x[13] VCC J[13] J[12] VGND inverter
+x[12] VCC J[12] J[11] VGND inverter
+x[11] VCC J[11] J[10] VGND inverter
+x[10] VCC J[10] J[9] VGND inverter
+x[9] VCC J[9] J[8] VGND inverter
+x[8] VCC J[8] J[7] VGND inverter
+x[7] VCC J[7] J[6] VGND inverter
+x[6] VCC J[6] J[5] VGND inverter
+x[5] VCC J[5] J[4] VGND inverter
+x[4] VCC J[4] J[3] VGND inverter
+x[3] VCC J[3] J[2] VGND inverter
+x[2] VCC J[2] J[1] VGND inverter
+x[1] VCC J[1] J[0] VGND inverter
+x[0] VCC J[0] A VGND inverter
+.ends
+
+
+* expanding   symbol:  nand.sym # of pins=5
+** sym_path: /home/anton/projects/ttihp26a-fomo/xschem/nand.sym
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/nand.sch
+.subckt nand VCC A Z B VGND
+*.opin Z
+*.ipin A
+*.iopin VCC
+*.iopin VGND
+*.ipin B
+XM1 Z A net1 VGND sg13_lv_nmos w=0.15u l=0.15u ng=1
+XM2 Z A VCC VCC sg13_lv_pmos w=0.15u l=0.15u ng=1
+XM3 Z B VCC VCC sg13_lv_pmos w=0.15u l=0.15u ng=1
+XM4 net1 B VGND VGND sg13_lv_nmos w=0.15u l=0.15u ng=1
+.ends
+
+
+* expanding   symbol:  inverter.sym # of pins=4
+** sym_path: /home/anton/projects/ttihp26a-fomo/xschem/inverter.sym
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/inverter.sch
+.subckt inverter VCC Y A VGND
+*.iopin VCC
+*.ipin A
+*.opin Y
+*.iopin VGND
+XM1 Y A VGND VGND sg13_lv_nmos w=0.15u l=0.15u ng=1
+XM2 Y A VCC VCC sg13_lv_pmos w=0.15u l=0.15u ng=1
+.ends
+
+.end

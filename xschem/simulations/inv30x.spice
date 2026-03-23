@@ -1,0 +1,44 @@
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/inv30x.sch
+.subckt inv30x A Y VCC VGND
+*.PININFO A:I Y:O VCC:B VGND:B
+x[29] VCC Y J[28] VGND inverter
+x[28] VCC J[28] J[27] VGND inverter
+x[27] VCC J[27] J[26] VGND inverter
+x[26] VCC J[26] J[25] VGND inverter
+x[25] VCC J[25] J[24] VGND inverter
+x[24] VCC J[24] J[23] VGND inverter
+x[23] VCC J[23] J[22] VGND inverter
+x[22] VCC J[22] J[21] VGND inverter
+x[21] VCC J[21] J[20] VGND inverter
+x[20] VCC J[20] J[19] VGND inverter
+x[19] VCC J[19] J[18] VGND inverter
+x[18] VCC J[18] J[17] VGND inverter
+x[17] VCC J[17] J[16] VGND inverter
+x[16] VCC J[16] J[15] VGND inverter
+x[15] VCC J[15] J[14] VGND inverter
+x[14] VCC J[14] J[13] VGND inverter
+x[13] VCC J[13] J[12] VGND inverter
+x[12] VCC J[12] J[11] VGND inverter
+x[11] VCC J[11] J[10] VGND inverter
+x[10] VCC J[10] J[9] VGND inverter
+x[9] VCC J[9] J[8] VGND inverter
+x[8] VCC J[8] J[7] VGND inverter
+x[7] VCC J[7] J[6] VGND inverter
+x[6] VCC J[6] J[5] VGND inverter
+x[5] VCC J[5] J[4] VGND inverter
+x[4] VCC J[4] J[3] VGND inverter
+x[3] VCC J[3] J[2] VGND inverter
+x[2] VCC J[2] J[1] VGND inverter
+x[1] VCC J[1] J[0] VGND inverter
+x[0] VCC J[0] A VGND inverter
+.ends
+
+* expanding   symbol:  inverter.sym # of pins=4
+** sym_path: /home/anton/projects/ttihp26a-fomo/xschem/inverter.sym
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/inverter.sch
+.subckt inverter VCC Y A VGND
+*.PININFO VCC:B A:I Y:O VGND:B
+M1 Y A VGND VGND sg13_lv_nmos w=0.15u l=0.15u ng=1
+M2 Y A VCC VCC sg13_lv_pmos w=0.15u l=0.15u ng=1
+.ends
+

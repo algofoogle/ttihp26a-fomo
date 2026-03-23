@@ -1,0 +1,6 @@
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/inverter.sch
+.subckt inverter VCC Y A VGND
+*.PININFO VCC:B A:I Y:O VGND:B
+M1 Y A VGND VGND sg13_lv_nmos w=0.15u l=0.15u ng=1
+M2 Y A VCC VCC sg13_lv_pmos w=0.15u l=0.15u ng=1
+.ends

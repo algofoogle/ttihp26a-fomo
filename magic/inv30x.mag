@@ -1,0 +1,195 @@
+magic
+tech ihp-sg13g2
+timestamp 1774245912
+<< metal1 >>
+rect -70 205 1045 245
+rect -70 90 10 125
+rect -70 -30 985 10
+rect -70 -460 -30 -30
+rect 1005 -225 1045 205
+rect -10 -265 1045 -225
+rect -70 -500 985 -460
+rect -70 -930 -30 -500
+rect 1005 -695 1045 -265
+rect -10 -735 1045 -695
+rect -70 -970 985 -930
+rect -70 -1085 10 -1050
+rect 1005 -1165 1045 -735
+rect -10 -1205 1045 -1165
+<< via1 >>
+rect 955 95 980 120
+rect -5 -140 20 -115
+rect 955 -140 980 -115
+rect -5 -375 20 -350
+rect 955 -375 980 -350
+rect -5 -610 20 -585
+rect 955 -610 980 -585
+rect -5 -845 20 -820
+rect 955 -845 980 -820
+rect 955 -1080 980 -1055
+<< metal2 >>
+rect 950 120 985 125
+rect 950 95 955 120
+rect 980 95 985 120
+rect -10 -115 25 -110
+rect -10 -140 -5 -115
+rect 20 -140 25 -115
+rect -10 -350 25 -140
+rect 950 -115 985 95
+rect 950 -140 955 -115
+rect 980 -140 985 -115
+rect 950 -145 985 -140
+rect -10 -375 -5 -350
+rect 20 -375 25 -350
+rect -10 -380 25 -375
+rect 950 -350 985 -345
+rect 950 -375 955 -350
+rect 980 -375 985 -350
+rect -10 -585 25 -580
+rect -10 -610 -5 -585
+rect 20 -610 25 -585
+rect -10 -820 25 -610
+rect 950 -585 985 -375
+rect 950 -610 955 -585
+rect 980 -610 985 -585
+rect 950 -615 985 -610
+rect -10 -845 -5 -820
+rect 20 -845 25 -820
+rect -10 -850 25 -845
+rect 950 -820 985 -815
+rect 950 -845 955 -820
+rect 980 -845 985 -820
+rect 950 -1055 985 -845
+rect 950 -1080 955 -1055
+rect 980 -1080 985 -1055
+rect 950 -1085 985 -1080
+use inverter  inverter_0
+timestamp 1774224276
+transform 1 0 -10 0 1 -10
+box 0 0 215 235
+use inverter  inverter_1
+timestamp 1774224276
+transform 1 0 185 0 1 -10
+box 0 0 215 235
+use inverter  inverter_2
+timestamp 1774224276
+transform 1 0 380 0 1 -10
+box 0 0 215 235
+use inverter  inverter_3
+timestamp 1774224276
+transform 1 0 575 0 1 -10
+box 0 0 215 235
+use inverter  inverter_4
+timestamp 1774224276
+transform 1 0 770 0 1 -10
+box 0 0 215 235
+use inverter  inverter_5
+timestamp 1774224276
+transform -1 0 985 0 -1 -10
+box 0 0 215 235
+use inverter  inverter_6
+timestamp 1774224276
+transform -1 0 790 0 -1 -10
+box 0 0 215 235
+use inverter  inverter_7
+timestamp 1774224276
+transform -1 0 595 0 -1 -10
+box 0 0 215 235
+use inverter  inverter_8
+timestamp 1774224276
+transform -1 0 400 0 -1 -10
+box 0 0 215 235
+use inverter  inverter_9
+timestamp 1774224276
+transform -1 0 205 0 -1 -10
+box 0 0 215 235
+use inverter  inverter_10
+timestamp 1774224276
+transform 1 0 -10 0 1 -480
+box 0 0 215 235
+use inverter  inverter_11
+timestamp 1774224276
+transform 1 0 185 0 1 -480
+box 0 0 215 235
+use inverter  inverter_12
+timestamp 1774224276
+transform 1 0 380 0 1 -480
+box 0 0 215 235
+use inverter  inverter_13
+timestamp 1774224276
+transform 1 0 575 0 1 -480
+box 0 0 215 235
+use inverter  inverter_14
+timestamp 1774224276
+transform 1 0 770 0 1 -480
+box 0 0 215 235
+use inverter  inverter_15
+timestamp 1774224276
+transform -1 0 985 0 -1 -480
+box 0 0 215 235
+use inverter  inverter_16
+timestamp 1774224276
+transform -1 0 790 0 -1 -480
+box 0 0 215 235
+use inverter  inverter_17
+timestamp 1774224276
+transform -1 0 595 0 -1 -480
+box 0 0 215 235
+use inverter  inverter_18
+timestamp 1774224276
+transform -1 0 400 0 -1 -480
+box 0 0 215 235
+use inverter  inverter_19
+timestamp 1774224276
+transform -1 0 205 0 -1 -480
+box 0 0 215 235
+use inverter  inverter_20
+timestamp 1774224276
+transform 1 0 -10 0 1 -950
+box 0 0 215 235
+use inverter  inverter_21
+timestamp 1774224276
+transform 1 0 185 0 1 -950
+box 0 0 215 235
+use inverter  inverter_22
+timestamp 1774224276
+transform 1 0 380 0 1 -950
+box 0 0 215 235
+use inverter  inverter_23
+timestamp 1774224276
+transform 1 0 575 0 1 -950
+box 0 0 215 235
+use inverter  inverter_24
+timestamp 1774224276
+transform 1 0 770 0 1 -950
+box 0 0 215 235
+use inverter  inverter_25
+timestamp 1774224276
+transform -1 0 985 0 -1 -950
+box 0 0 215 235
+use inverter  inverter_26
+timestamp 1774224276
+transform -1 0 790 0 -1 -950
+box 0 0 215 235
+use inverter  inverter_27
+timestamp 1774224276
+transform -1 0 595 0 -1 -950
+box 0 0 215 235
+use inverter  inverter_28
+timestamp 1774224276
+transform -1 0 400 0 -1 -950
+box 0 0 215 235
+use inverter  inverter_29
+timestamp 1774224276
+transform -1 0 205 0 -1 -950
+box 0 0 215 235
+<< labels >>
+flabel metal1 -70 205 -30 245 0 FreeSans 80 0 0 0 VCC
+port 2 nsew
+flabel metal1 -70 -30 -30 10 0 FreeSans 80 0 0 0 VGND
+port 3 nsew
+flabel metal1 -70 90 -30 125 0 FreeSans 80 0 0 0 A
+port 4 nsew
+flabel metal1 -70 -1085 -30 -1050 0 FreeSans 80 0 0 0 Y
+port 5 nsew
+<< end >>

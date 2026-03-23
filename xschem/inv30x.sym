@@ -1,0 +1,29 @@
+v {xschem version=3.4.8RC file_version=1.3}
+G {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+spectre_format="@name ( @pinlist ) @symname"
+template="name=x1"
+}
+V {}
+S {}
+F {}
+E {}
+L 4 40 0 70 0 {}
+L 4 -80 0 -40 0 {}
+L 7 -20 -60 -20 -20 {}
+L 7 -20 20 -20 60 {}
+B 5 -22.5 -62.5 -17.5 -57.5 {name=VCC dir=inout}
+B 5 -22.5 57.5 -17.5 62.5 {name=VGND dir=inout}
+B 5 67.5 -2.5 72.5 2.5 {name=Y dir=out}
+B 5 -82.5 -2.5 -77.5 2.5 {name=A dir=in}
+A 4 30 0 10 90 360 {}
+P 4 5 50 -40 -60 -40 -60 40 50 40 50 -40 {}
+P 4 4 -40 -30 20 0 -40 30 -40 -30 {}
+T {@symname} -5 -61 0 0 0.3 0.3 {}
+T {@name} 55 -42 0 0 0.2 0.2 {}
+T {VCC} -25 -54 0 1 0.2 0.2 {}
+T {VGND} -22.5 38.5 0 1 0.2 0.2 {}
+T {Y} 60 -14 0 1 0.2 0.2 {}
+T {A} -70 -14 0 0 0.2 0.2 {}
+T {30x} -30 -12.5 0 0 0.3 0.3 {}
