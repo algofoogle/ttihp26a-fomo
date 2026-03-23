@@ -1,0 +1,8 @@
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/nand.sch
+.subckt nand VCC A Z B VGND
+*.PININFO Z:O A:I VCC:B VGND:B B:I
+M1 Z B net1 VGND sg13_lv_nmos w=0.15u l=0.15u ng=1
+M2 Z A VCC VCC sg13_lv_pmos w=0.15u l=0.15u ng=1
+M3 Z B VCC VCC sg13_lv_pmos w=0.15u l=0.15u ng=1
+M4 net1 A VGND VGND sg13_lv_nmos w=0.15u l=0.15u ng=1
+.ends

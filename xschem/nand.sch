@@ -62,5 +62,5 @@ C {iopin.sym} 180 -30 2 0 {name=p8 lab=VGND}
 C {ipin.sym} 40 -400 0 0 {name=p10 lab=B}
 C {lab_pin.sym} 50 -290 0 0 {name=p1 sig_type=std_logic lab=A}
 C {lab_pin.sym} 310 -290 0 1 {name=p2 sig_type=std_logic lab=B}
-C {lab_pin.sym} 140 -170 0 0 {name=p4 sig_type=std_logic lab=A}
-C {lab_pin.sym} 140 -90 0 0 {name=p6 sig_type=std_logic lab=B}
+C {lab_pin.sym} 140 -90 0 0 {name=p4 sig_type=std_logic lab=A}
+C {lab_pin.sym} 140 -170 0 0 {name=p6 sig_type=std_logic lab=B}
