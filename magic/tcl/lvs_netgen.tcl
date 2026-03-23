@@ -1,6 +1,7 @@
 set layout [readnet spice $project.lvs.spice]
 set source [readnet spice /dev/null]
-readnet spice $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sg13g2_stdcell/spice/sg13g2_stdcell.spice $source
+readnet spice /home/anton/ttsetup@ttihp26a/pdk/ciel/ihp-sg13g2/versions/cb7daaa8901016cf7c5d272dfa322c41f024931f/ihp-sg13g2/libs.ref/sg13g2_stdcell/spice/sg13g2_stdcell.spice $source
+# readnet spice $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sg13g2_stdcell/spice/sg13g2_stdcell.spice $source
 # readnet spice $::env(PDK_ROOT)/$::env(PDK)/libs.tech/ngspice/models/resistors_mod.lib
 # readnet spice $::env(PDK_ROOT)/$::env(PDK)/libs.tech/ngspice/models/resistors_stat.lib
 # readnet spice $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice $source
@@ -19,8 +20,8 @@ if {$project eq "tt_um_algofoogle_fomo"} {
     # # Add spice files of analog block(s):
     # readnet spice ../xschem/simulations/r2r_dac.spice     $source
 
-    # # Add GL verilog of digital block(s) (i.e. flat file from OpenLane hardening):
-    # readnet verilog ../verilog/gl/controller.pnl.v $source
+    # Add GL verilog of digital block(s) (i.e. flat file from LibreLane hardening):
+    readnet verilog ../verilog/gl/digital.pnl.v $source
     # readnet verilog ../verilog/gl/rgb_buffers.pnl.v $source
 
     # Top-level abstract integration verilog:

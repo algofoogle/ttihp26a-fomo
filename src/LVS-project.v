@@ -53,12 +53,14 @@ module tt_um_algofoogle_fomo (
         .Z      (ring_in)
     );
 
-    rm4 rm4_00( .A(uo_out[0]), .B(VGND) );
-    rm4 rm4_01( .A(uo_out[1]), .B(VGND) );
-    rm4 rm4_02( .A(uo_out[2]), .B(VGND) );
-    rm4 rm4_03( .A(uo_out[3]), .B(VGND) );
-    rm4 rm4_04( .A(uo_out[4]), .B(VGND) );
-    rm4 rm4_05( .A(uo_out[5]), .B(VGND) );
+    digital digital_0(
+        .VPWR   (VDPWR),
+        .VGND   (VGND),
+        .ringosc(ring_out),
+        .rst_n  (rst_n),
+        .divs   (uo_out[5:0])
+    );
+
     rm4 rm4_06( .A(uo_out[6]), .B(VGND) );
     rm4 rm4_07( .A(uo_out[7]), .B(VGND) );
 
@@ -69,7 +71,7 @@ module tt_um_algofoogle_fomo (
     rm4 rm4_12( .A(uio_out[4]), .B(VGND) );
     rm4 rm4_13( .A(uio_out[5]), .B(VGND) );
     rm4 rm4_14( .A(uio_out[6]), .B(VGND) );
-    assign         uio_out[7] = ring_out;
+    rm4 rm4_15( .A(uio_out[7]), .B(VDPWR) );
 
     rm4 rm4_16( .A(uio_oe[0]), .B(VGND) ); // Input: ring_enb.
     rm4 rm4_17( .A(uio_oe[1]), .B(VDPWR) );
