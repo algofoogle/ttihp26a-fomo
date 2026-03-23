@@ -1,0 +1,8 @@
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/pmosbank.sch
+.subckt pmosbank VCC VHIGH sel[3] sel[2] sel[1] sel[0]
+*.PININFO VCC:I VHIGH:O sel[3:0]:I
+M1 VHIGH sel[0] VCC VCC sg13_lv_pmos w=0.5u l=2u ng=1
+M3 VHIGH sel[1] VCC VCC sg13_lv_pmos w=0.5u l=1u ng=1
+M6 VHIGH sel[2] VCC VCC sg13_lv_pmos w=0.5u l=0.5u ng=1
+M8 VHIGH sel[3] VCC VCC sg13_lv_pmos w=2u l=0.15u ng=1
+.ends

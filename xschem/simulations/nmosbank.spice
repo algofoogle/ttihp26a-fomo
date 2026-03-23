@@ -1,0 +1,8 @@
+** sch_path: /home/anton/projects/ttihp26a-fomo/xschem/nmosbank.sch
+.subckt nmosbank VGND VLOW sel[3] sel[2] sel[1] sel[0]
+*.PININFO VGND:I VLOW:O sel[3:0]:I
+M2 VLOW sel[0] VGND VGND sg13_lv_nmos w=0.15u l=2.5u ng=1
+M4 VLOW sel[1] VGND VGND sg13_lv_nmos w=0.15u l=1.25u ng=1
+M5 VLOW sel[2] VGND VGND sg13_lv_nmos w=0.15u l=0.65u ng=1
+M7 VLOW sel[3] VGND VGND sg13_lv_nmos w=1u l=0.15u ng=1
+.ends
