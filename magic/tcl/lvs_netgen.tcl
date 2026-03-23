@@ -9,6 +9,11 @@ if {$project eq "tt_um_algofoogle_fomo"} {
 
     # LVS the whole design.
 
+    # Add spice files of analog block(s):
+    readnet spice ../xschem/simulations/nand.spice $source
+    readnet spice ../xschem/simulations/inv30x.spice $source
+    readnet spice ../xschem/simulations/rm4.spice $source ;# Dummy rmetal4 resistor for top-level shorts.
+
     # # Add spice files of analog block(s):
     # readnet spice ../xschem/simulations/r2r_dac.spice     $source
 
@@ -16,11 +21,8 @@ if {$project eq "tt_um_algofoogle_fomo"} {
     # readnet verilog ../verilog/gl/controller.pnl.v $source
     # readnet verilog ../verilog/gl/rgb_buffers.pnl.v $source
 
-    # # Top-level abstract integration verilog:
-    # readnet verilog ../src/LVS-project.v $source
-
     # Top-level abstract integration verilog:
-    readnet verilog ../src/project.v $source
+    readnet verilog ../src/LVS-project.v $source
 
     lvs "$layout $project" "$source $project" \
         ../magic/tcl/lvs_setup_script.tcl \
@@ -32,14 +34,14 @@ if {$project eq "tt_um_algofoogle_fomo"} {
 
     # LVS just a specific cell:
 
-    if {($project eq "rgb_buffers") || ($project eq "controller")} {
-        # Load Verilog netlist:
-        readnet verilog ../verilog/gl/$project.pnl.v $source
-    } else {
+    # if {($project eq "rgb_buffers") || ($project eq "controller")} {
+    #     # Load Verilog netlist:
+    #     readnet verilog ../verilog/gl/$project.pnl.v $source
+    # } else {
         # Load SPICE netlist:
         readnet spice ../xschem/simulations/$project.spice $source
         # readnet spice ../magic/rhigh.spice $source
-    }
+    # }
     
     lvs "$layout $project" "$source $project" \
         ../magic/tcl/lvs_setup_script.tcl \

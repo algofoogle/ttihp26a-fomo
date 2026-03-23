@@ -1,0 +1,6 @@
+* NGSPICE file created from rm4.ext - technology: ihp-sg13g2
+
+.subckt rm4 A B
+R0 A B 0.220000
+.ends
+

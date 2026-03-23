@@ -1,0 +1,14 @@
+magic
+tech ihp-sg13g2
+timestamp 1774269209
+<< metal4 >>
+rect 0 0 30 30
+rect 105 0 135 30
+<< rmetal4 >>
+rect 30 0 105 30
+<< labels >>
+flabel metal4 0 0 30 30 0 FreeSans 80 0 0 0 A
+port 0 nsew
+flabel metal4 105 0 135 30 0 FreeSans 80 0 0 0 B
+port 1 nsew
+<< end >>
