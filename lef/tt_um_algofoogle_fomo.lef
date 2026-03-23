@@ -1,7 +1,3 @@
-VERSION 5.7 ;
-  NOWIREEXTENSIONATPIN ON ;
-  DIVIDERCHAR "/" ;
-  BUSBITCHARS "[]" ;
 MACRO tt_um_algofoogle_fomo
   CLASS BLOCK ;
   FOREIGN tt_um_algofoogle_fomo ;
@@ -34,7 +30,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.045000 ;
+    ANTENNAGATEAREA 1.000000 ;
     PORT
       LAYER Metal4 ;
         RECT 179.370 153.980 179.670 154.980 ;
@@ -43,6 +39,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.500000 ;
     PORT
       LAYER Metal4 ;
         RECT 175.530 153.980 175.830 154.980 ;
@@ -51,6 +48,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.250000 ;
     PORT
       LAYER Metal4 ;
         RECT 171.690 153.980 171.990 154.980 ;
@@ -59,6 +57,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.300000 ;
     PORT
       LAYER Metal4 ;
         RECT 167.850 153.980 168.150 154.980 ;
@@ -67,6 +66,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.375000 ;
     PORT
       LAYER Metal4 ;
         RECT 164.010 153.980 164.310 154.980 ;
@@ -75,6 +75,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.187500 ;
     PORT
       LAYER Metal4 ;
         RECT 160.170 153.980 160.470 154.980 ;
@@ -83,6 +84,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.097500 ;
     PORT
       LAYER Metal4 ;
         RECT 156.330 153.980 156.630 154.980 ;
@@ -91,6 +93,7 @@ MACRO tt_um_algofoogle_fomo
   PIN ui_in[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.150000 ;
     PORT
       LAYER Metal4 ;
         RECT 152.490 153.980 152.790 154.980 ;
@@ -99,6 +102,7 @@ MACRO tt_um_algofoogle_fomo
   PIN uio_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.045000 ;
     PORT
       LAYER Metal4 ;
         RECT 148.650 153.980 148.950 154.980 ;
@@ -227,8 +231,6 @@ MACRO tt_um_algofoogle_fomo
   PIN uio_out[0]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.045000 ;
-    ANTENNADIFFAREA 0.390000 ;
     PORT
       LAYER Metal4 ;
         RECT 87.210 153.980 87.510 154.980 ;
@@ -285,6 +287,8 @@ MACRO tt_um_algofoogle_fomo
   PIN uio_out[7]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.045000 ;
+    ANTENNADIFFAREA 0.390000 ;
     PORT
       LAYER Metal4 ;
         RECT 60.330 153.980 60.630 154.980 ;
@@ -372,13 +376,13 @@ MACRO tt_um_algofoogle_fomo
   END VGND
   OBS
       LAYER GatPoly ;
-        RECT 172.200 131.200 186.000 144.700 ;
+        RECT 132.200 121.900 149.000 150.300 ;
       LAYER Metal1 ;
-        RECT 87.035 130.700 186.850 146.065 ;
+        RECT 62.035 121.150 149.850 151.150 ;
       LAYER Metal2 ;
-        RECT 86.995 131.900 186.250 150.545 ;
+        RECT 61.995 121.750 180.400 152.545 ;
       LAYER Metal3 ;
-        RECT 86.990 132.600 179.695 153.495 ;
+        RECT 60.285 121.750 179.900 152.550 ;
       LAYER Metal4 ;
         RECT 30.120 153.770 33.240 153.980 ;
         RECT 33.960 153.770 37.080 153.980 ;
@@ -421,11 +425,11 @@ MACRO tt_um_algofoogle_fomo
         RECT 176.040 153.770 179.160 153.980 ;
         RECT 179.880 153.770 183.000 153.980 ;
         RECT 183.720 153.770 186.840 153.980 ;
-        RECT 29.500 132.555 187.350 153.770 ;
+        RECT 29.500 120.750 187.350 153.770 ;
       LAYER Metal5 ;
-        RECT 1.000 132.300 169.850 146.050 ;
+        RECT 1.000 131.600 127.200 146.050 ;
       LAYER TopMetal1 ;
-        RECT 10.040 131.700 168.520 134.100 ;
+        RECT 10.040 131.600 124.850 134.200 ;
   END
 END tt_um_algofoogle_fomo
 END LIBRARY

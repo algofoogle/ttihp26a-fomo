@@ -20,11 +20,27 @@ module tt_um_algofoogle_fomo (
 
     wire ring_in;
     wire ring_out;
-    wire ring_enb = ui_in[0];
+    wire ring_enb = uio_in[0];
+
+    wire rhigh;
+    wire rlow;
+
+    pmosbank pmosbank_0(
+        .VCC    (VDPWR),
+        .sel    (ui_in[3:0]),
+        .VHIGH  (rhigh)
+    );
+
+    nmosbank nmosbank_0(
+        .VGND   (VGND),
+        .sel    (ui_in[7:4]),
+        .VLOW   (rlow)
+    );
 
     inv30x inv30x_0(
-        .VCC    (VDPWR),
-        .VGND   (VGND),
+        .VCC    (rhigh),
+        // .VGND   (VGND),
+        .VGND   (rlow),
         .A      (ring_in),
         .Y      (ring_out)
     );
@@ -46,23 +62,23 @@ module tt_um_algofoogle_fomo (
     rm4 rm4_06( .A(uo_out[6]), .B(VGND) );
     rm4 rm4_07( .A(uo_out[7]), .B(VGND) );
 
-    assign         uio_out[0] = ring_out;
+    rm4 rm4_08( .A(uio_out[0]), .B(VGND) );
     rm4 rm4_09( .A(uio_out[1]), .B(VGND) );
     rm4 rm4_10( .A(uio_out[2]), .B(VGND) );
     rm4 rm4_11( .A(uio_out[3]), .B(VGND) );
     rm4 rm4_12( .A(uio_out[4]), .B(VGND) );
     rm4 rm4_13( .A(uio_out[5]), .B(VGND) );
     rm4 rm4_14( .A(uio_out[6]), .B(VGND) );
-    rm4 rm4_15( .A(uio_out[7]), .B(VGND) );
+    assign         uio_out[7] = ring_out;
 
-    rm4 rm4_16( .A(uio_oe[0]), .B(VDPWR) );
+    rm4 rm4_16( .A(uio_oe[0]), .B(VGND) ); // Input: ring_enb.
     rm4 rm4_17( .A(uio_oe[1]), .B(VDPWR) );
     rm4 rm4_18( .A(uio_oe[2]), .B(VDPWR) );
     rm4 rm4_19( .A(uio_oe[3]), .B(VDPWR) );
     rm4 rm4_20( .A(uio_oe[4]), .B(VDPWR) );
     rm4 rm4_21( .A(uio_oe[5]), .B(VDPWR) );
     rm4 rm4_22( .A(uio_oe[6]), .B(VDPWR) );
-    rm4 rm4_23( .A(uio_oe[7]), .B(VDPWR) );
+    rm4 rm4_23( .A(uio_oe[7]), .B(VDPWR) ); // Output: ring_out.
 
 
 endmodule

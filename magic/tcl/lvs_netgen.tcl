@@ -12,6 +12,8 @@ if {$project eq "tt_um_algofoogle_fomo"} {
     # Add spice files of analog block(s):
     readnet spice ../xschem/simulations/nand.spice $source
     readnet spice ../xschem/simulations/inv30x.spice $source
+    readnet spice ../xschem/simulations/nmosbank.spice $source
+    readnet spice ../xschem/simulations/pmosbank.spice $source
     readnet spice ../xschem/simulations/rm4.spice $source ;# Dummy rmetal4 resistor for top-level shorts.
 
     # # Add spice files of analog block(s):
